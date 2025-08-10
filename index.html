@@ -7,14 +7,14 @@
   <title>G. Chiranjeevulu &amp; Co. — Gangishetty Pramod Kumar, CA (Income Tax Auditor)</title>
 
   <!-- For SEO -->
-  <meta name="keywords" content="income tax auditor, tax compliance, audit services, Pramod Kumar, G Chiranjeevulu & Co">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="keywords"
+    content="income tax auditor, tax compliance, audit services, Pramod Kumar, G Chiranjeevulu & Co">
 
   <meta name="description"
     content="G. Chiranjeevulu & Co. — Income tax auditing and consultancy headed by Dr. Gangishetty Pramod Kumar, District President, Arya Vyshya Maha Sabha." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <style>
     :root {
       --accent: #0f6cff;
@@ -44,10 +44,14 @@
     }
 
     header {
+      position: relative;
+      /* needed for absolute nav dropdown */
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px
+      gap: 16px;
+      padding: 0 24px;
+      height: 70px;
     }
 
     .brand {
@@ -79,6 +83,19 @@
     nav a:hover {
       color: var(--accent)
     }
+
+    /* Hamburger button */
+    #nav-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--accent);
+      z-index: 20;
+    }
+
+    /* Hero, services, cards, etc... (unchanged) */
 
     .hero {
       display: grid;
@@ -162,7 +179,8 @@
       text-align: center
     }
 
-    /* responsive */
+    /* Responsive */
+
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr
@@ -175,18 +193,30 @@
       .two-col {
         grid-template-columns: 1fr
       }
-    }
 
-    /* Updated contact container */
-    .contact-container {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    @media (max-width: 900px) {
-      .contact-container {
+      /* Hide nav by default on small screens */
+      nav {
+        display: none;
         flex-direction: column;
+        gap: 12px;
+        background: var(--card);
+        position: absolute;
+        top: 70px;
+        right: 24px;
+        padding: 12px 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(12, 18, 36, 0.1);
+        z-index: 10;
+      }
+
+      /* Show nav when toggled */
+      nav.show {
+        display: flex;
+      }
+
+      /* Show hamburger button */
+      #nav-toggle {
+        display: block;
       }
     }
 
@@ -217,6 +247,19 @@
       background: #007bb5;
       color: white;
     }
+
+    /* Contact container */
+    .contact-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-container {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 
@@ -230,7 +273,13 @@
           <div class="small">Income Tax Auditing • Consultancy</div>
         </div>
       </div>
-      <nav aria-label="Main navigation">
+
+      <!-- Hamburger button -->
+      <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+        &#9776;
+      </button>
+
+      <nav id="nav-menu" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#leadership">Leadership</a>
@@ -243,10 +292,11 @@
         <div class="intro">
           <div class="card">
             <h1>Dr. Gangishetty Pramod Kumar</h1>
-            <div class="role">Managing Director — G. Chiranjeevulu &amp; Co. | District President, Arya Vyshya Maha Sabha</div>
-            <p class="lead">Experienced income tax auditor with a strong record in audits, tax planning and
-              advisory services for individuals, MSMEs and corporates. We combine technical rigor with practical
-              business sense to give clear, actionable advice.</p>
+            <div class="role">Managing Director — G. Chiranjeevulu &amp; Co. | District President, Arya Vyshya Maha
+              Sabha</div>
+            <p class="lead">Experienced income tax auditor with a strong record in audits, tax planning and advisory
+              services for individuals, MSMEs and corporates. We combine technical rigor with practical business sense
+              to give clear, actionable advice.</p>
 
             <div class="services" id="services">
               <div class="service">
@@ -262,7 +312,6 @@
                 <div class="small">Tax planning, representation &amp; dispute resolution.</div>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -301,14 +350,15 @@
                   ">Linkedin</span>
                 </div>
                 <style>
-                  .fa-linkedin:hover + .linkedin-tooltip,
-                  .fa-linkedin:focus + .linkedin-tooltip {
+                  .fa-linkedin:hover+.linkedin-tooltip,
+                  .fa-linkedin:focus+.linkedin-tooltip {
                     visibility: visible !important;
                     opacity: 1 !important;
                   }
                 </style>
                 <div style="position: relative; display: inline-block;">
-                  <a target="_blank" href="https://www.facebook.com/gangishetty.pramodkumar/" class="fa fa-facebook"></a>
+                  <a target="_blank" href="https://www.facebook.com/gangishetty.pramodkumar/"
+                    class="fa fa-facebook"></a>
                   <span class="facebook-tooltip" style="
                   visibility: hidden;
                   background: #3B5998;
@@ -326,15 +376,16 @@
                   ">Facebook</span>
                 </div>
                 <style>
-                  .fa-linkedin:hover + .linkedin-tooltip,
-                  .fa-linkedin:focus + .linkedin-tooltip {
-                  visibility: visible !important;
-                  opacity: 1 !important;
+                  .fa-linkedin:hover+.linkedin-tooltip,
+                  .fa-linkedin:focus+.linkedin-tooltip {
+                    visibility: visible !important;
+                    opacity: 1 !important;
                   }
-                  .fa-facebook:hover + .facebook-tooltip,
-                  .fa-facebook:focus + .facebook-tooltip {
-                  visibility: visible !important;
-                  opacity: 1 !important;
+
+                  .fa-facebook:hover+.facebook-tooltip,
+                  .fa-facebook:focus+.facebook-tooltip {
+                    visibility: visible !important;
+                    opacity: 1 !important;
                   }
                 </style>
               </div>
@@ -419,8 +470,36 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Small enhancement: smooth-scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }));
+
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    navToggle.addEventListener('click', () => {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      navMenu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (event) => {
+      const navToggle = document.getElementById('nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+
+      // If click target is NOT the hamburger button or inside nav menu, close the menu
+      if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+        navMenu.classList.remove('show');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
   </script>
 </body>
 
